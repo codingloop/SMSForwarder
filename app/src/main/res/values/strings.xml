@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SMS Forwarder</string>
+
+    <string name="shared_pref_name">in.codingloop.smsforwarder.sms_forwarder</string>
+    <string name="shared_pref_contacts">contacts</string>
+    <string name="shared_pref_fwd_type">forward_type</string>
+    <string name="shared_pref_words_to_ignore">words_to_ignore</string>
+
+    <string name="fwd_type_whatsapp">Whatsapp</string>
+    <string name="fwd_type_sms">SMS</string>
+    <string name="fwd_type_both">Both</string>
+    <string name="tv_fwd_through_msg">Forward SMS through:</string>
+    <string name="tv_long_press_s1">Long press to edit</string>
+    <string name="tv_long_press_s2">Long press to save</string>
+    <string name="btn_action_add">Add</string>
+    <string name="btn_action_delete">Delete</string>
+
+    <string name="hint_for_contacts">Enter contact number</string>
+    <string name="hint_for_blocked_sender">Enter sender name to block</string>
+
+    <string-array name="tab_titles">
+        <item>Contacts</item>
+        <item>Blocked Senders</item>
+    </string-array>
+
+</resources>
