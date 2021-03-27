@@ -42,7 +42,7 @@ public class SharedPrefs {
         String[] entries = getSavedEntries(actionFor).split("\n");
         Set<String> set = new HashSet<>();
         for (String s: entries) {
-            set.add(s.trim());
+            if (s.length() != 0) set.add(s.trim());
         }
         return set;
     }
