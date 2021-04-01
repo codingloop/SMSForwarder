@@ -42,32 +42,38 @@ public class SharedPrefs {
         String[] entries = getSavedEntries(actionFor).split("\n");
         Set<String> set = new HashSet<>();
         for (String s: entries) {
-            if (s.length() != 0) set.add(s.trim());
+            if (s.trim().length() != 0) set.add(s.trim());
         }
         return set;
     }
 
     public void deleteEntry(String valueToDelete, String actionFor) {
         String[] savedEntries = getSavedEntries(actionFor).split("\n");
-        String newString = "";
+        StringBuilder newString = new StringBuilder();
         for (String savedEntry : savedEntries) {
-            if (valueToDelete.equals(savedEntry)) {
+            if (savedEntry.trim().equals("")) continue;
+            if (valueToDelete.trim().equals(savedEntry.trim())) {
                 continue;
             }
-            newString = newString + savedEntry + "\n";
+            newString.append(savedEntry.trim()).append("\n");
         }
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(actionFor, newString);
+        editor.putString(actionFor, newString.toString());
         editor.apply();
     }
 
     public void addEntry(String valueToAdd, String actionFor) {
         if (valueToAdd.length() < 1)
             return;
-        String savedEntries = getSavedEntries(actionFor);
-        savedEntries += valueToAdd + "\n";
+        StringBuilder newValue = new StringBuilder();
+        String[] savedEntries = getSavedEntries(actionFor).split("\n");
+        for(String s: savedEntries) {
+            if (s.trim().equals("")) continue;
+            newValue.append(s.trim()).append("\n");
+        }
+        newValue.append(valueToAdd.trim()).append("\n");
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(actionFor, savedEntries);
+        editor.putString(actionFor, newValue.toString());
         editor.apply();
     }
 }
