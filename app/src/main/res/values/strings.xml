@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SMS Forwarder</string>
+    <string name="app_name">Genuine SMS Forwarder</string>
 
     <string name="shared_pref_name">in.codingloop.smsforwarder.sms_forwarder</string>
     <string name="shared_pref_contacts">contacts</string>
@@ -15,8 +15,16 @@
     <string name="btn_action_add">Add</string>
     <string name="btn_action_delete">Delete</string>
 
-    <string name="hint_for_contacts">Enter contact number</string>
+    <string name="hint_for_extension">Ext <font color='#FF0000'>*</font></string>
+    <string name="hint_for_contacts">Enter contact number <font color='#FF0000'>*</font></string>
     <string name="hint_for_blocked_sender">Enter sender name to block</string>
+    <string name="d_cc_default_extension">+91</string>
+    <string name="hint_for_max_limit">Daily maximum forwards (optional)</string>
+    <string name="menu_i1_add_contact">Add contact</string>
+    <string name="menu_i2_block_user">Block sender</string>
+    <string name="d_sb_rb_1_exact_match">Exact match</string>
+    <string name="d_sb_rb_1_part_match">Partial match</string>
+    <string name="d_sb_hint_sender_to_block">Enter sender name to block</string>
 
     <string-array name="tab_titles">
         <item>Contacts</item>

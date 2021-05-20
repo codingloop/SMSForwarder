@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/m1_add_contact"
+        android:title="@string/menu_i1_add_contact"
+        />
+
+    <item android:id="@+id/m2_blocked_user"
+        android:title="@string/menu_i2_block_user"
+        />
+</menu>

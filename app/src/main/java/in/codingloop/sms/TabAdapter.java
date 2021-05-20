@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import java.util.List;
+
 public class TabAdapter extends FragmentPagerAdapter {
-    String[] tabList;
+    List<RowsFragment> tabList;
     Context c;
 
-    public TabAdapter(@NonNull FragmentManager fm, Context c, String[] tabList) {
+    public TabAdapter(@NonNull FragmentManager fm, Context c, List<RowsFragment> tabList) {
         super(fm);
         this.c = c;
         this.tabList = tabList;
@@ -21,12 +23,12 @@ public class TabAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return new RowsFragment(tabList[position]);
+        return tabList.get(position);
     }
 
     @Override
     public int getCount() {
-        return tabList.length;
+        return tabList.size();
     }
 
     @Nullable
