@@ -6,7 +6,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,7 +33,7 @@ import in.codingloop.sms.dialogs.CreateContact;
 import in.codingloop.sms.objects.BlockedSenders;
 import in.codingloop.sms.objects.Contacts;
 
-public class MainActivity extends AppCompatActivity implements ActionInterface{
+public class MainActivity extends AppCompatActivity implements ActionInterface {
 
     // Object references
     SharedPrefs prefs;
@@ -58,9 +60,22 @@ public class MainActivity extends AppCompatActivity implements ActionInterface{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkPermissions();
         initDatabase();
         assignViews();
         initTabAdapter();
+    }
+
+    private void checkPermissions() {
+
+        if (checkSelfPermission(Manifest.permission.RECEIVE_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS},
+                    2);
+
+            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+            // app-defined int constant
+        }
     }
 
     private void initSharedPreference() {
@@ -241,6 +256,19 @@ public class MainActivity extends AppCompatActivity implements ActionInterface{
     public void deleteContact(int id) {
         dbManager.deleteContact(id);
         refreshContactList();
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == 2) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getApplicationContext(), "Sucess", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Application wont work without SMS " +
+                            "permission, Please allow the permission in settings", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
 }

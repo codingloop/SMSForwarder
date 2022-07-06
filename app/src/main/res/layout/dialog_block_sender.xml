@@ -10,8 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/d_sb_hint_sender_to_block"
-        app:boxBackgroundColor="@android:color/transparent"
-        android:background="@android:color/transparent"
         android:id="@+id/d_block_user_e1"
         >
 

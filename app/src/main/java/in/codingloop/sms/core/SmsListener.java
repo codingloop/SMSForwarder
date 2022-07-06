@@ -111,5 +111,20 @@ public class SmsListener extends BroadcastReceiver {
         } catch (Exception e) {
             Toast.makeText(c, "" + e, Toast.LENGTH_SHORT).show();
         }
+        Intent intent = new Intent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+//         "com.whatsapp" : "com.whatsapp.w4b";
+        intent.setPackage("com.whatsapp");
+        intent.putExtra("jid","8553215557" + "@s.whatsapp.net");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Teste");
+        intent.putExtra(Intent.EXTRA_TEXT, "extraText");
+
+        //Intent chooserIntent = Intent.createChooser(intent, chooserTitle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        context.startActivity(intent);
     }
 }
