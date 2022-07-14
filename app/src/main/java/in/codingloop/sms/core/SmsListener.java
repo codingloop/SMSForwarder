@@ -23,8 +23,9 @@ public class SmsListener extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        this.c = context;
         if(intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")){
-            Toast.makeText(context, "Message received", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Message received", Toast.LENGTH_SHORT).show();
 
             Bundle bundle = intent.getExtras();           //---get the SMS message passed in---
             SmsMessage[] msgs = null;
@@ -51,6 +52,7 @@ public class SmsListener extends BroadcastReceiver {
                             // Send SMS
                             String msgBody  = msgs[i].getMessageBody();
                             sendMessage(msg_from, msgBody, contactsList);
+//                            Toast.makeText(context, "Message sent", Toast.LENGTH_SHORT).show();
                         } else {
                             // Toast sender is blocked
                         }
@@ -92,11 +94,12 @@ public class SmsListener extends BroadcastReceiver {
             try {
 
 //                    smsManager.sendTextMessage("+91" + contact, null, msg, NULL, null);
-                smsManager.sendMultipartTextMessage("+91" + contact, null,msgArray, null, null);
+                smsManager.sendMultipartTextMessage(contact, null,msgArray, null, null);
             } catch (Exception e) {
-                Toast.makeText(c, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+
             }
         } catch (Exception ex) {
+
         }
     }
 
